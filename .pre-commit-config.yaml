@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/ambv/black
+    rev: 24.1.1
+    hooks:
+      - id: black
+        name: Formatting code via black
+        entry: black app/ tests/
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: Sorting the imports
+        args: ['app', 'tests']
+        additional_dependencies: [ toml ]
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        name: Running the flake tests
+        entry: flake8 app tests
+        additional_dependencies:
+          - pep8-naming==0.13.3
+          - flake8-debugger==4.1.2
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0  # Use the ref you want to point at
+    hooks:
+      - id: check-merge-conflict
+        name: Verifying if no merge conflict markers are present
+      - id: detect-private-key
+        name: Verifying if no private-keys are present
