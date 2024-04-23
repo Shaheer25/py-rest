@@ -5,7 +5,9 @@ import pytest
 
 @pytest.fixture
 def passing():
+    """Dummy Fixture"""
     return True
+
 
 def test_sample(passing):
     """
