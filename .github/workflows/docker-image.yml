@@ -10,5 +10,4 @@ jobs:
       - name: Build the Docker image
         run: |
           docker network create rest-net
-          docker-compose up --build
-          exit 0
+          docker-compose up --build -d
