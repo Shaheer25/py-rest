@@ -20,7 +20,9 @@ class InterceptHandler(logging.Handler):
             "pathname": record.pathname,
             "lineno": record.lineno,
             "funcName": record.funcName,
-            "exc_info": (self.format_exception(record.exc_info) if record.exc_info else None),
+            "exc_info": (
+                self.format_exception(record.exc_info) if record.exc_info else None
+            ),
         }
 
         # Convert the dictionary to a JSON string
