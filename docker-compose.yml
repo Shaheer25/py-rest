@@ -35,9 +35,20 @@ services:
       - "6379:6379"
     networks:
       - rest-net
+  
+  rest_mongodb:
+    image: mongo:latest
+    container_name: rest_mongodb
+    ports:
+      - 27019:27017
+    volumes:
+      - "mongo:/data/db"
+    networks:
+      - rest-net
 
 volumes:
   redis: {}
+  mongo: {}
 
 networks:
   rest-net:
