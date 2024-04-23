@@ -31,6 +31,10 @@ cffi = "1.16.0"
 cfgv = "3.4.0"
 charset-normalizer = "3.3.2"
 rapidfuzz = "^3.8.1"
+uvicorn = "^0.29.0"
+fastapi = "^0.110.2"
+loguru = "^0.7.2"
+starlette = "^0.37.2"
 
 
 [build-system]
