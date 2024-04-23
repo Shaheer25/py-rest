@@ -1,3 +1,5 @@
+"""File is the main file where app the APIs are Configured"""
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -5,14 +7,14 @@ from app.configs.configs import DEBUG, PROJECT_NAME, VERSION
 from app.routes.helath import router as health_router
 
 
-def config_cors(app: FastAPI):
+def config_cors(apps: FastAPI):
     """
     Enables CORS for diffrerent
     1. Origins
     2. methods
     3. Headers
     """
-    app.add_middleware(
+    apps.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
         allow_credentials=True,
@@ -22,6 +24,9 @@ def config_cors(app: FastAPI):
 
 
 def get_application() -> FastAPI:
+    """
+    FastAPI configure
+    """
     application = FastAPI(title=PROJECT_NAME, debug=DEBUG, version=VERSION)
     config_cors(application)
     return application
