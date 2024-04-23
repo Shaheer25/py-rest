@@ -60,7 +60,6 @@ docs/_build/
 target/
 
 # DotEnv configuration
-.env
 venv
 
 # Database
