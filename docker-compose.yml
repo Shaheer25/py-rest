@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  rest-service:
+      build:
+        context: .
+        dockerfile: fastAPI.Dockerfile
+        args:
+          DEV: "true"
+      container_name: rest-service
+      ports:
+        - "8080:8080"
+      env_file:
+        - .env
+      # command: uvicorn main:app --reload --host 0.0.0.0 --port 8080
+      volumes:
+        - ./app:/app/
+      networks:
+        - rest-net
+
+  rest-worker:
+    build:
+      context: .
+      dockerfile: celery.Dockerfile
+    container_name: rest-worker
+    networks:
+      - rest-net
+
+  rest-redis:
+    image: redis:alpine
+    container_name: rest-redis
+    volumes:
+      - "redis:/data"
+    ports:
+      - "6379:6379"
+    networks:
+      - rest-net
+
+volumes:
+  redis: {}
+
+networks:
+  rest-net:
+    external: true
