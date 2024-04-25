@@ -46,9 +46,22 @@ services:
     networks:
       - rest-net
 
+  rest_elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
+    container_name: rest_elasticsearch
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - "elasticsearch:/usr/share/elasticsearch/data"
+    networks:
+      - rest-net
+
 volumes:
   redis: {}
   mongo: {}
+  elasticsearch: {}
 
 networks:
   rest-net:
