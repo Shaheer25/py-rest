@@ -6,6 +6,8 @@ from loguru import logger
 
 
 class InterceptHandler(logging.Handler):
+    """Intercepter Class"""
+
     @staticmethod
     def format_exception(exc_info):
         """Formats multiple exec into a single entity"""
